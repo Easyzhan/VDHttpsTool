@@ -132,6 +132,11 @@ static inline NSData * image2Data(UIImage *img,CGFloat num) {
             success:(HttpSuccessBlock)success
             failure:(HttpFailureBlock)failure
 {
+    if ([path hasPrefix:@"http"]) {//当传入的路径本身就是个全链接
+    }else{
+        // 获取完整的URL
+        urlString = [kBaseURLString stringByAppendingPathComponent:path];
+    }
     // 获取完整的URL
     NSString *urlString = [kBaseURLString stringByAppendingPathComponent:path];
     // 实例化请求
