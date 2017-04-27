@@ -76,9 +76,12 @@ static inline NSData * image2Data(UIImage *img,CGFloat num) {
     // 初始化HUD
     ZGDHUD *HUDView = [[ZGDHUD alloc] init];
     [HUDView showLoadingHUDAtView:hudView];
-    
-    // 获取完整的URL
-    NSString *urlString = [kBaseURLString stringByAppendingPathComponent:path];
+     if ([path hasPrefix:@"http"]) {
+ 
+    }else{
+        // 获取完整的URL
+        urlString = [kBaseURLString stringByAppendingPathComponent:path];
+    }
     // 实例化请求
     NSError *error = nil;
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:params error:&error];
@@ -137,8 +140,7 @@ static inline NSData * image2Data(UIImage *img,CGFloat num) {
         // 获取完整的URL
         urlString = [kBaseURLString stringByAppendingPathComponent:path];
     }
-    // 获取完整的URL
-    NSString *urlString = [kBaseURLString stringByAppendingPathComponent:path];
+ 
     // 实例化请求
     NSError *error = nil;
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:urlString parameters:params error:&error];
