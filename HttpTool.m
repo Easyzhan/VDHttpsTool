@@ -76,7 +76,7 @@ static inline NSData * image2Data(UIImage *img,CGFloat num) {
     // 初始化HUD
     ZGDHUD *HUDView = [[ZGDHUD alloc] init];
     [HUDView showLoadingHUDAtView:hudView];
-     if ([path hasPrefix:@"http"]) {
+     if ([path hasPrefix:@"http"]) {//当输入的是绝对地址时,不必去拼接url
  
     }else{
         // 获取完整的URL
